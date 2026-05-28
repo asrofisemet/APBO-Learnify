@@ -57,7 +57,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <a class="navbar-brand logo_h" href="<?= base_url('welcome') ?>"><img src="<?= base_url('assets/') ?>img/logo.png" alt=""></a>
+                    <a class="navbar-brand logo_h" href="<?= site_url('welcome') ?>"><img src="<?= base_url('assets/') ?>img/logo.png" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
@@ -72,10 +72,10 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                                                                                         echo $data['user']['nama'];
                                                                                                         ?></a>
                             </li>
-                            <li class="nav-item active"><a class="nav-link" href="<?= base_url('user') ?>">Beranda</a>
+                            <li class="nav-item active"><a class="nav-link" href="<?= site_url('user') ?>">Beranda</a>
                             </li>
-                            <li class="nav-item "><a class="nav-link text-danger" href="<?= base_url('welcome/logout') ?>">Log
-                                    Out</a>
+                            <li class="nav-item "><a class="nav-link text-danger" href="<?= site_url('welcome/logout') ?>">Log
+                                     Out</a>
                             </li>
                         </ul>
                     </div>
@@ -114,21 +114,21 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
     <div class="container">
         <div class="row mt-4 mb-5">
             <div class="col-md-4 mb-2 d-flex justify-content-center" data-aos-duration="1900" data-aos="fade-right">
-                <a href="<?= base_url('materi/matematika_xi') ?>">
+                <a href="<?= site_url('materi/matematika_xi') ?>">
                     <div class="card-kelas">
                         <img src="<?= base_url('assets/') ?>img/matematika.png" class="card-img-top" alt="...">
                     </div>
                 </a>
             </div>
             <div class="col-md-4 mb-2 d-flex justify-content-center" data-aos-duration="1900" data-aos="fade-down">
-                <a href="<?= base_url('materi/ipa_xi') ?>">
+                <a href="<?= site_url('materi/ipa_xi') ?>">
                     <div class="card-kelas">
                         <img src="<?= base_url('assets/') ?>img/ipa.png" class="card-img-top" alt="...">
                     </div>
                 </a>
             </div>
             <div class="col-md-4 mb-2 d-flex justify-content-center" data-aos-duration="1900" data-aos="fade-left">
-                <a href="<?= base_url('materi/indo_xi') ?>">
+                <a href="<?= site_url('materi/indo_xi') ?>">
                     <div class="card-kelas">
                         <img src="<?= base_url('assets/') ?>img/Bahasa Indonesia.png" class="card-img-top" alt="...">
                     </div>
@@ -140,21 +140,21 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
     <div class="container">
         <div class="row mt-4 mb-5">
             <div class="col-md-4 mb-2 d-flex justify-content-center" data-aos-duration="1900" data-aos="fade-right">
-                <a href="<?= base_url('materi/inggris_xi') ?>">
+                <a href="<?= site_url('materi/inggris_xi') ?>">
                     <div class="card-kelas">
                         <img src="<?= base_url('assets/') ?>img/Bahasa Inggris.png" class="card-img-top" alt="...">
                     </div>
                 </a>
             </div>
             <div class="col-md-4 mb-2 d-flex justify-content-center" data-aos-duration="1900" data-aos="fade-down">
-                <a href="<?= base_url('materi/agama_xi') ?>">
+                <a href="<?= site_url('materi/agama_xi') ?>">
                     <div class="card-kelas">
                         <img src="<?= base_url('assets/') ?>img/agama.png" class="card-img-top" alt="...">
                     </div>
                 </a>
             </div>
             <div class="col-md-4 mb-2 d-flex justify-content-center" data-aos-duration="1900" data-aos="fade-left">
-                <a href="<?= base_url('user') ?>">
+                <a href="<?= site_url('user') ?>">
                     <div class="card-kelas">
                         <img src="<?= base_url('assets/') ?>img/Kembali.png" class="card-img-top" alt="...">
                     </div>

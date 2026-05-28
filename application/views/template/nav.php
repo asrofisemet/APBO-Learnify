@@ -62,7 +62,7 @@
         <div class="main_menu">
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
-                    <a class="navbar-brand logo_h" href="<?= base_url('index.php/welcome') ?>">
+                    <a class="navbar-brand logo_h" href="<?= site_url('welcome') ?>">
                         <img src="<?= base_url('assets/') ?>img/logo.png" alt="">
                     </a>
 
@@ -76,19 +76,19 @@
                         <ul class="nav navbar-nav menu_nav ml-auto">
 
                             <li class="nav-item" id="nav">
-                                <a class="nav-link" href="<?= base_url('index.php/welcome') ?>">Beranda</a>
+                                <a class="nav-link" href="<?= site_url('welcome') ?>">Beranda</a>
                             </li>
 
                             <li class="nav-item" id="navtentang">
-                                <a class="nav-link" href="<?= base_url('index.php/welcome/tentang') ?>">Tentang</a>
+                                <a class="nav-link" href="<?= site_url('welcome/tentang') ?>">Tentang</a>
                             </li>
 
                             <li class="nav-item submenu dropdown" id="navpelajaran">
-                                <a href="<?= base_url('index.php/welcome/pelajaran') ?>" class="nav-link dropdown-toggle">Pelajaran</a>
+                                <a href="<?= site_url('welcome/pelajaran') ?>" class="nav-link dropdown-toggle">Pelajaran</a>
                             </li>
 
                             <li class="nav-item" id="navkontak">
-                                <a class="nav-link" href="<?= base_url('index.php/welcome/kontak') ?>">Kontak</a>
+                                <a class="nav-link" href="<?= site_url('welcome/kontak') ?>">Kontak</a>
                             </li>
 
                             <li class="nav-item">

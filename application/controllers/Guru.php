@@ -7,10 +7,15 @@ class Guru extends CI_Controller
     {
         parent::__construct();
         $this->load->helper('url');
+        $this->session->set_flashdata('not-login', 'Gagal!');
         if (!$this->session->userdata('email')) {
-            $this->session->set_flashdata('not-login', 'Gagal!');
             redirect('welcome/guru');
         }
+    }
+
+    public function test_confirm()
+    {
+        $this->load->view('guru/test_confirm');
     }
 
     public function index()
@@ -32,9 +37,8 @@ class Guru extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('guru/add_materi');
         } else {
-            $upload_video = $_FILES['video'];
-
-            if ($upload_video) {
+            $video = '';
+            if (!empty($_FILES['video']['name'])) {
                 $config['allowed_types'] = 'mp4|mkv';
                 $config['max_size'] = '0';
                 $config['upload_path'] = './assets/materi_video';
@@ -44,9 +48,14 @@ class Guru extends CI_Controller
                 if ($this->upload->do_upload('video')) {
                     $video = $this->upload->data('file_name');
                 } else {
-                    $this->upload->display_errors();
+                    $this->session->set_flashdata('error-upload', $this->upload->display_errors('', ''));
+                    redirect('guru/add_materi');
                 }
+            } else {
+                $this->session->set_flashdata('error-upload', 'Harap pilih file video materi.');
+                redirect('guru/add_materi');
             }
+
             $data = [
                 'nama_guru' => htmlspecialchars($this->input->post('nama_guru', true)),
                 'nama_mapel' => htmlspecialchars($this->input->post('nama_mapel', true)),
@@ -57,8 +66,110 @@ class Guru extends CI_Controller
 
             $this->db->insert('materi', $data);
             $this->session->set_flashdata('success-reg', 'Berhasil!');
-            redirect(base_url('index.php/guru'));
+            redirect('guru');
         }
+    }
+
+    public function data_nilai()
+    {
+        // die("DEBUG: CONTROLLER GURU/DATA_NILAI TERPANGGIL");
+        $data['user'] = $this->db->get_where('guru', [
+            'email' =>
+                $this->session->userdata('email')
+        ])->row_array();
+
+        // Get nilai data joined with siswa names
+        $this->db->select('nilai.*, siswa.nama');
+        $this->db->from('nilai');
+        $this->db->join('siswa', 'siswa.id = nilai.id_siswa', 'left');
+        $this->db->order_by('nilai.id', 'DESC');
+        $query = $this->db->get();
+        $data['nilai'] = $query->result_array();
+
+        // Calculate statistics
+        $data['total_nilai'] = count($data['nilai']);
+
+        if ($data['total_nilai'] > 0) {
+            $sum = 0;
+            $max = 0;
+            $min = 100;
+            foreach ($data['nilai'] as $n) {
+                $val = (int) $n['nilai'];
+                $sum += $val;
+                if ($val > $max)
+                    $max = $val;
+                if ($val < $min)
+                    $min = $val;
+            }
+            $data['rata_rata'] = $sum / $data['total_nilai'];
+            $data['nilai_tertinggi'] = $max;
+            $data['nilai_terendah'] = $min;
+        } else {
+            $data['rata_rata'] = 0;
+            $data['nilai_tertinggi'] = '-';
+            $data['nilai_terendah'] = '-';
+        }
+
+        // Get siswa list for add form
+        $data['siswa'] = $this->db->get('siswa')->result_array();
+
+        $this->load->view('guru/data_nilai', $data);
+    }
+
+    public function tambah_nilai()
+    {
+        $data = [
+            'id_siswa' => $this->input->post('id_siswa'),
+            'nama_mapel' => htmlspecialchars($this->input->post('nama_mapel', true)),
+            'nilai' => $this->input->post('nilai'),
+            'semester' => htmlspecialchars($this->input->post('semester', true)),
+        ];
+
+        $this->db->insert('nilai', $data);
+        $this->session->set_flashdata('success-nilai', 'Berhasil!');
+        redirect('guru/data_nilai');
+    }
+
+    public function edit_nilai($id)
+    {
+        $data['user'] = $this->db->get_where('guru', [
+            'email' =>
+                $this->session->userdata('email')
+        ])->row_array();
+
+        $this->db->select('nilai.*, siswa.nama');
+        $this->db->from('nilai');
+        $this->db->join('siswa', 'siswa.id = nilai.id_siswa', 'left');
+        $this->db->where('nilai.id', $id);
+        $data['nilai_item'] = $this->db->get()->row_array();
+
+        $data['siswa'] = $this->db->get('siswa')->result_array();
+
+        $this->load->view('guru/edit_nilai', $data);
+    }
+
+    public function update_nilai()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'id_siswa' => $this->input->post('id_siswa'),
+            'nama_mapel' => htmlspecialchars($this->input->post('nama_mapel', true)),
+            'nilai' => $this->input->post('nilai'),
+            'semester' => htmlspecialchars($this->input->post('semester', true)),
+        ];
+
+        $this->db->where('id', $id);
+        $this->db->update('nilai', $data);
+        $this->session->set_flashdata('success-nilai', 'Berhasil!');
+        redirect('guru/data_nilai');
+    }
+
+    public function delete_nilai($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('nilai');
+        $this->session->set_flashdata('delete-nilai', 'Berhasil!');
+        redirect('guru/data_nilai');
     }
 
     private function _uploadImage()
@@ -78,150 +189,5 @@ class Guru extends CI_Controller
         }
 
         return "default.mp4";
-    }
-
-    // Manajemen Absensi
-    public function data_absensi()
-    {
-        $this->load->model('m_absensi');
-        $data['user'] = $this->db->get_where('guru', [
-            'email' => $this->session->userdata('email')
-        ])->row_array();
-        $data['absensi'] = $this->m_absensi->tampil_data()->result();
-        $data['siswa'] = $this->db->get('siswa')->result();
-        $this->load->view('guru/data_absensi', $data);
-    }
-
-    public function tambah_absensi()
-    {
-        $this->load->model('m_absensi');
-
-        $id_siswa = $this->input->post('id_siswa');
-        $tanggal = $this->input->post('tanggal');
-        $status = $this->input->post('status');
-
-        $data = [
-            'id_siswa' => $id_siswa,
-            'tanggal' => $tanggal,
-            'status' => $status,
-        ];
-
-        $this->m_absensi->tambah_absensi($data);
-        $this->session->set_flashdata('success-reg', 'Data absensi berhasil ditambahkan!');
-        redirect('guru/data_absensi');
-    }
-
-    public function delete_absensi($id)
-    {
-        $this->load->model('m_absensi');
-        $where = array('id' => $id);
-        $this->m_absensi->delete_absensi($where);
-        $this->session->set_flashdata('user-delete', 'berhasil');
-        redirect('guru/data_absensi');
-    }
-
-    public function update_absensi($id)
-    {
-        $this->load->model('m_absensi');
-        $data['detail'] = $this->m_absensi->detail_absensi($id);
-        $data['siswa'] = $this->db->get('siswa')->result();
-        $data['user'] = $this->db->get_where('guru', ['email' => $this->session->userdata('email')])->row_array();
-
-        $this->load->view('guru/update_absensi', $data);
-    }
-
-    public function absensi_edit()
-    {
-        $this->load->model('m_absensi');
-
-        $id = $this->input->post('id');
-        $id_siswa = $this->input->post('id_siswa');
-        $tanggal = $this->input->post('tanggal');
-        $status = $this->input->post('status');
-
-        $data = [
-            'id_siswa' => $id_siswa,
-            'tanggal' => $tanggal,
-            'status' => $status,
-        ];
-
-        $where = ['id' => $id];
-        $this->m_absensi->update_absensi($where, $data);
-        $this->session->set_flashdata('success-edit', 'berhasil');
-        redirect('guru/data_absensi');
-    }
-
-    // Manajemen Nilai
-    public function data_nilai()
-    {
-        $this->load->model('m_nilai');
-        $data['user'] = $this->db->get_where('guru', [
-            'email' => $this->session->userdata('email')
-        ])->row_array();
-        $data['nilai'] = $this->m_nilai->tampil_data()->result();
-        $data['siswa'] = $this->db->get('siswa')->result();
-        $this->load->view('guru/data_nilai', $data);
-    }
-
-    public function tambah_nilai()
-    {
-        $this->load->model('m_nilai');
-
-        $id_siswa = $this->input->post('id_siswa');
-        $nama_mapel = $this->input->post('nama_mapel');
-        $nilai = $this->input->post('nilai');
-        $semester = $this->input->post('semester');
-
-        $data = [
-            'id_siswa' => $id_siswa,
-            'nama_mapel' => $nama_mapel,
-            'nilai' => $nilai,
-            'semester' => $semester,
-        ];
-
-        $this->m_nilai->tambah_nilai($data);
-        $this->session->set_flashdata('success-reg', 'Data nilai berhasil ditambahkan!');
-        redirect('guru/data_nilai');
-    }
-
-    public function delete_nilai($id)
-    {
-        $this->load->model('m_nilai');
-        $where = array('id' => $id);
-        $this->m_nilai->delete_nilai($where);
-        $this->session->set_flashdata('user-delete', 'berhasil');
-        redirect('guru/data_nilai');
-    }
-
-    public function update_nilai($id)
-    {
-        $this->load->model('m_nilai');
-        $data['user'] = $this->db->get_where('guru', ['email' => $this->session->userdata('email')])->row_array();
-        $data['detail'] = $this->m_nilai->detail_nilai($id);
-        $data['siswa'] = $this->db->get('siswa')->result();
-        $this->load->view('guru/update_nilai', $data);
-    }
-
-    public function nilai_edit()
-    {
-        $this->load->model('m_nilai');
-
-        $id = $this->input->post('id');
-        $id_siswa = $this->input->post('id_siswa');
-        $nama_mapel = $this->input->post('nama_mapel');
-        $nilai = $this->input->post('nilai');
-        $semester = $this->input->post('semester');
-
-        $data = [
-            'id_siswa' => $id_siswa,
-            'nama_mapel' => $nama_mapel,
-            'nilai' => $nilai,
-            'semester' => $semester,
-        ];
-
-        $where = ['id' => $id];
-        $this->m_nilai->update_nilai($where, $data);
-        $this->session->set_flashdata('success-edit', 'berhasil');
-        redirect('guru/data_nilai');
     }
 }

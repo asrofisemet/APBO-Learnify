@@ -20,9 +20,9 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                 <div class="single-footer-widget tp_widgets">
                     <h6 class="footer_title">Tentang Kami</h6>
                     <ul class="list">
-                        <li><a href="<?= base_url('index.php/welcome/tentang') ?>">Tentang Learnify</a></li>
-                        <li><a href="<?= base_url('index.php/welcome/materi') ?>">Materi Learnify</a></li>
-                        <li><a href="<?= base_url('index.php/welcome/kontak') ?>">Kontak Learnify</a></li>
+                        <li><a href="<?= site_url('welcome/tentang') ?>">Tentang Learnify</a></li>
+                        <li><a href="<?= site_url('welcome/materi') ?>">Materi Learnify</a></li>
+                        <li><a href="<?= site_url('welcome/kontak') ?>">Kontak Learnify</a></li>
                         <li><a href="http://smkn1ciamis.id/">Website Resmi Sekolah</a></li>
                     </ul>
                 </div>
@@ -32,7 +32,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                     <h6 class="footer_title">Masuk - Sign in</h6>
                     <ul class="list">
                         <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Untuk Siswa</a></li>
-                        <li><a href="<?= base_url('index.php/welcome/guru') ?>">Untuk Guru</a></li>
+                        <li><a href="<?= site_url('welcome/guru') ?>">Untuk Guru</a></li>
                     </ul>
                 </div>
             </div>
@@ -117,7 +117,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                 class="img-fluid img-responsive mx-auto " style="height: 350px;">
                         </div>
                         <div class=" col-md-6">
-                            <form action="<?= base_url('index.php/welcome/validateLogin') ?>" method="post">
+                            <form action="<?= site_url('welcome/validateLogin') ?>" method="post">
                                 <div class="form-group">
                                     <label class="label-font" for="
                                         exampleFormControlInput1">
@@ -145,7 +145,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                     menyetujui
                                     <i>privasi dan persyaratan ketentuan
                                         hukum kami </i> .
-                                    belum punya akun? daftar <a href=" <?= base_url('index.php/user/registration') ?>">
+                                    belum punya akun? daftar <a href=" <?= site_url('user/registration') ?>">
                                         disini.</a>
                                 </p>
                                 <button class="btn btn-block font-weight-bold"

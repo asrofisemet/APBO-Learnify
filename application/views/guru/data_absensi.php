@@ -130,7 +130,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
     <!-- begin:: Header Mobile -->
     <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
         <div class="kt-header-mobile__logo">
-            <a href="<?= base_url('guru') ?>">
+            <a href="<?= site_url('guru') ?>">
                 <img alt="Logo" src="<?= base_url('assets') ?>/img/logo.png" width="90px;" />
             </a>
         </div>
@@ -155,7 +155,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                 <!-- begin:: Brand -->
                 <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
                     <div class="kt-aside__brand-logo">
-                        <a href="<?= base_url('guru') ?>">
+                        <a href="<?= site_url('guru') ?>">
                             <img alt="Logo" width="35px;" src="<?= base_url('assets') ?>/img/favicon.png" />
                         </a>
                     </div>
@@ -169,7 +169,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                         data-ktmenu-dropdown="1" data-ktmenu-scroll="0">
                         <ul class="kt-menu__nav ">
                             <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"><a
-                                    href="<?= base_url('guru') ?>" class="kt-menu__link"><i
+                                    href="<?= site_url('guru') ?>" class="kt-menu__link"><i
                                         class="kt-menu__link-icon flaticon2-protection"></i><span
                                         class="kt-menu__link-text">Applications</span><i
                                         class="kt-menu__ver-arrow la la-angle-right"></i></a>
@@ -192,17 +192,17 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                                     class="kt-menu__link-text">Tambah</span></span>
                                         </li>
                                         <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
-                                                href="<?= base_url('guru/add_materi') ?>" class="kt-menu__link "><i
+                                                href="<?= site_url('guru/add_materi') ?>" class="kt-menu__link "><i
                                                     class="kt-menu__link-icon la la-commenting"></i><span
                                                     class="kt-menu__link-text">Materi</span></a>
                                         </li>
                                         <li class="kt-menu__item " aria-haspopup="true"><a
-                                                href="<?= base_url('guru/data_absensi') ?>" class="kt-menu__link "><i
+                                                href="<?= site_url('guru/data_absensi') ?>" class="kt-menu__link "><i
                                                     class="kt-menu__link-icon la la-users"></i><span
                                                     class="kt-menu__link-text">Absensi</span></a>
                                         </li>
                                         <li class="kt-menu__item " aria-haspopup="true"><a
-                                                href="<?= base_url('guru/data_nilai') ?>" class="kt-menu__link "><i
+                                                href="<?= site_url('guru/data_nilai') ?>" class="kt-menu__link "><i
                                                     class="kt-menu__link-icon la la-star-o"></i><span
                                                     class="kt-menu__link-text">Nilai</span></a>
                                         </li>
@@ -230,7 +230,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout- ">
                             <ul class="kt-menu__nav ">
                                 <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a
-                                        href="<?= base_url('guru') ?>" class="kt-menu__link "><span
+                                        href="<?= site_url('guru') ?>" class="kt-menu__link "><span
                                             class="kt-menu__link-text">Dashboard</span></a></li>
                                 <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel"
                                     data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;"
@@ -307,7 +307,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                         </div>
                                     </a>
                                     <div class="kt-notification__custom">
-                                        <a href="<?= base_url('welcome/logout') ?>"
+                                        <a href="<?= site_url('welcome/logout') ?>"
                                             class="btn btn-label-brand btn-sm btn-bold">Log Out</a>
                                     </div>
                                 </div>
@@ -395,7 +395,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                         <div class="collapse mb-4" id="formTambah">
                                             <div class="card card-body bg-light">
                                                 <h5 class="font-weight-bold mb-3">Form Tambah Absensi</h5>
-                                                <form action="<?= base_url('guru/tambah_absensi') ?>" method="POST">
+                                                <form action="<?= site_url('guru/tambah_absensi') ?>" method="POST">
                                                     <div class="form-group row">
                                                         <div class="col-md-4">
                                                             <label>Nama Siswa</label>

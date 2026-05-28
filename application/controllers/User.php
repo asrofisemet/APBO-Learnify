@@ -105,7 +105,7 @@ class User extends CI_Controller
             // $this->_sendEmail($token, 'verify');
 
             $this->session->set_flashdata('success-reg', 'Berhasil!');
-            redirect(base_url('index.php/welcome'));
+            redirect('welcome');
         }
     }
 

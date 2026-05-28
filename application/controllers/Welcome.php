@@ -35,7 +35,7 @@ class Welcome extends CI_Controller
     {
         $this->session->unset_userdata('email');
         $this->session->set_flashdata('success-logout', 'Berhasil!');
-        redirect(base_url('index.php/welcome'));
+        redirect('welcome');
     }
 
     private function login()
@@ -55,18 +55,18 @@ class Welcome extends CI_Controller
                     ];
 
                     $this->session->set_userdata($data);
-                    redirect(base_url('index.php/user'));
+                    redirect('user');
                 } else {
                     $this->session->set_flashdata('fail-pass', 'Gagal!');
-                    redirect(base_url('index.php/welcome'));
+                    redirect('welcome');
                 }
             } else {
                 $this->session->set_flashdata('fail-email', 'Gagal!');
-                redirect(base_url('index.php/welcome'));
+                redirect('welcome');
             }
         } else {
             $this->session->set_flashdata('fail-login', 'Gagal!');
-            redirect(base_url('index.php/welcome'));
+            redirect('welcome');
         }
     }
 
@@ -104,16 +104,16 @@ class Welcome extends CI_Controller
 
                 ];
                 $this->session->set_userdata($data);
-                redirect(base_url('index.php/admin'));
+                redirect('admin');
             } else {
 
                 $this->session->set_flashdata('fail-pass', 'Gagal!');
-                redirect(base_url('index.php/welcome/admin'));
+                redirect('welcome/admin');
             }
         } else {
 
             $this->session->set_flashdata('fail-login', 'Gagal!');
-            redirect(base_url('index.php/welcome/admin'));
+            redirect('welcome/admin');
         }
     }
 
@@ -154,21 +154,21 @@ class Welcome extends CI_Controller
 
                     $this->db->delete('token', ['email' => $email]);
                     $this->session->set_flashdata('success-verify', 'Bserhasil!');
-                    redirect(base_url('index.php/welcome'));
+                    redirect('welcome');
                 } else {
                     $this->db->delete('siswa', ['email' => $email]);
                     $this->db->delete('token', ['email' => $email]);
 
                     $this->session->set_flashdata('fail-token-expired', 'gagal');
-                    redirect(base_url('index.php/welcome'));
+                    redirect('welcome');
                 }
             } else {
                 $this->session->set_flashdata('fail-token', 'gagal');
-                redirect(base_url('index.php/welcome'));
+                redirect('welcome');
             }
         } else {
             $this->session->set_flashdata('fail-verify', 'gagal');
-            redirect(base_url('index.php/welcome'));
+            redirect('welcome');
         }
     }
 
@@ -205,7 +205,7 @@ class Welcome extends CI_Controller
                     'nama_guru' => $user['nama_guru'],
                 ];
                 $this->session->set_userdata($data);
-                redirect(base_url('index.php/guru'));
+                redirect('guru');
             }
             // Fallback: cek apakah password disimpan sebagai plain text
             elseif ($password === $user['password']) {
@@ -219,14 +219,14 @@ class Welcome extends CI_Controller
                     'nama_guru' => $user['nama_guru'],
                 ];
                 $this->session->set_userdata($data);
-                redirect(base_url('index.php/guru'));
+                redirect('guru');
             } else {
                 $this->session->set_flashdata('fail-pass', 'Gagal!');
-                redirect(base_url('index.php/welcome/guru'));
+                redirect('welcome/guru');
             }
         } else {
             $this->session->set_flashdata('fail-login', 'Gagal!');
-            redirect(base_url('index.php/welcome/guru'));
+            redirect('welcome/guru');
         }
     }
 

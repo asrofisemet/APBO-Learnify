@@ -54,7 +54,7 @@
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="container">
                     <!-- Brand and toggle get grouped for better mobile display -->
-                    <a class="navbar-brand logo_h" href="<?= base_url('welcome') ?>"><img
+                    <a class="navbar-brand logo_h" href="<?= site_url('welcome') ?>"><img
                             src="<?= base_url('assets/') ?>img/logo.png" alt=""></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse"
                         data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -67,16 +67,16 @@
                     <div class="collapse navbar-collapse offset" id="navbarSupportedContent">
                         <ul class="nav navbar-nav menu_nav ml-auto">
                             <li class="nav-item" id="nav"><a class="nav-link"
-                                    href="<?= base_url('welcome') ?>">Beranda</a></li>
+                                    href="<?= site_url('welcome') ?>">Beranda</a></li>
                             <li class="nav-item" id="navtentang"><a class="nav-link"
-                                    href="<?= base_url('welcome/tentang') ?>">Tentang</a>
+                                    href="<?= site_url('welcome/tentang') ?>">Tentang</a>
                             </li>
                             <li class="nav-item submenu dropdown" id="navpelajaran">
-                                <a href="<?= base_url('welcome/pelajaran') ?>" class="nav-link dropdown-toggle"
+                                <a href="<?= site_url('welcome/pelajaran') ?>" class="nav-link dropdown-toggle"
                                     role="button" aria-haspopup="true" aria-expanded="false">Pelajaran</a>
                             </li>
                             <li class="nav-item" id="navkontak"><a class="nav-link"
-                                    href="<?= base_url('welcome/kontak') ?>">Kontak</a>
+                                    href="<?= site_url('welcome/kontak') ?>">Kontak</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal"
                                     data-target="#exampleModalCenter">Masuk</a></li>
@@ -98,8 +98,8 @@
                 <div class="banner_content text-center">
                     <h2>Pendaftaran Learnify</h2>
                     <div class="page_link">
-                        <a href="<?= base_url('index.php/welcome') ?>">Beranda</a>
-                        <a href="<?= base_url('index.php/user/registration') ?>">Pendaftaran</a>
+                        <a href="<?= site_url('welcome') ?>">Beranda</a>
+                        <a href="<?= site_url('user/registration') ?>">Pendaftaran</a>
                     </div>
                 </div>
             </div>
@@ -121,7 +121,7 @@
                 <div class="bodymovin" data-icon="<?= base_url('assets/') ?>json/registration-animation.json"></div>
             </div>
             <div class="col-md-6 mx-auto my-auto mt--5">
-                <form action="<?= base_url('index.php/user/registration_act') ?>" method="post">
+                <form action="<?= site_url('user/registration_act') ?>" method="post">
                     <div class="form-group">
                         <label for="nama_lengkap" class="label-font-register">Nama lengkap</label>
                         <input type="text" autocomplete="off" class="form-control effect-9" name="nama"

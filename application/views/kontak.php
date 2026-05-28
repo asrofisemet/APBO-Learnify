@@ -7,8 +7,8 @@
             <div class="banner_content text-center">
                 <h2 data-aos="fade-up" data-aos-duration="1600">Kontak</h2>
                 <div data-aos="fade-up" data-aos-duration="1600" class="page_link">
-                    <a href="<?= base_url('welcome') ?>">Beranda</a>
-                    <a href="<?= base_url('welcome/kontak') ?>">Kontak</a>
+                    <a href="<?= site_url('welcome') ?>">Beranda</a>
+                    <a href="<?= site_url('welcome/kontak') ?>">Kontak</a>
                 </div>
             </div>
         </div>

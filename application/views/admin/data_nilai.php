@@ -43,7 +43,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <div class="dropdown-title">Admin - Learnify</div>
-                            <a href="<?= base_url('welcome/logout') ?>" class="dropdown-item has-icon text-danger">
+                            <a href="<?= site_url('welcome/logout') ?>" class="dropdown-item has-icon text-danger">
                                 <i class="fas fa-sign-out-alt"></i> Logout
                             </a>
                         </div>
@@ -54,19 +54,19 @@
                 <aside id="sidebar-wrapper">
                     <div class="sidebar-brand text-danger">
                         <div>
-                            <a href="<?= base_url('admin') ?>"
+                            <a href="<?= site_url('admin') ?>"
                                 style="font-size: 30px;font-weight:900;font-family: 'Poppins', sans-serif;"
                                 class="text-success text-center"><i style="font-size: 30px;"
                                     class="fas fa-graduation-cap"></i> | Learnify <sup>3</sup></a>
                         </div>
                     </div>
                     <div class="sidebar-brand sidebar-brand-sm">
-                        <a href="<?= base_url('admin') ?>">LY<sup>3</sup></a>
+                        <a href="<?= site_url('admin') ?>">LY<sup>3</sup></a>
                     </div>
                     <ul class="sidebar-menu">
                         <li class="menu-header">Dashboard</li>
                         <li class="nav-item dropdown">
-                            <a href="<?= base_url('admin') ?>" class="nav-link"><i
+                            <a href="<?= site_url('admin') ?>" class="nav-link"><i
                                     class="fas fa-desktop"></i><span>Dashboard</span></a>
                         </li>
                         <li class="menu-header">Management Siswa</li>
@@ -74,7 +74,7 @@
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i
                                     class="fas fa-user"></i><span>Siswa</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/data_siswa') ?>">Data Siswa</a></li>
+                                <li><a class="nav-link" href="<?= site_url('admin/data_siswa') ?>">Data Siswa</a></li>
                             </ul>
                         </li>
                         <li class="menu-header">Management Guru</li>
@@ -82,8 +82,8 @@
                             <a href="#" class="nav-link has-dropdown"><i
                                     class="fas fa-chalkboard-teacher"></i><span>Guru</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/data_guru') ?>">Data Guru</a></li>
-                                <li><a class="nav-link" href="<?= base_url('admin/add_guru') ?>">Tambah Data Guru</a>
+                                <li><a class="nav-link" href="<?= site_url('admin/data_guru') ?>">Data Guru</a></li>
+                                <li><a class="nav-link" href="<?= site_url('admin/add_guru') ?>">Tambah Data Guru</a>
                                 </li>
                             </ul>
                         </li>
@@ -91,8 +91,8 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-book"></i><span>Materi</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/data_materi') ?>">Data Materi</a></li>
-                                <li><a class="nav-link" href="<?= base_url('admin/tambah_materi') ?>">Tambah Materi</a>
+                                <li><a class="nav-link" href="<?= site_url('admin/data_materi') ?>">Data Materi</a></li>
+                                <li><a class="nav-link" href="<?= site_url('admin/tambah_materi') ?>">Tambah Materi</a>
                                 </li>
                             </ul>
                         </li>
@@ -101,7 +101,7 @@
                             <a href="#" class="nav-link has-dropdown"><i
                                     class="fas fa-clipboard-list"></i><span>Absensi</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/data_absensi') ?>">Data Absensi</a>
+                                <li><a class="nav-link" href="<?= site_url('admin/data_absensi') ?>">Data Absensi</a>
                                 </li>
                             </ul>
                         </li>
@@ -109,7 +109,7 @@
                         <li class="nav-item dropdown active">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-star"></i><span>Nilai</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/data_nilai') ?>">Data Nilai</a></li>
+                                <li><a class="nav-link" href="<?= site_url('admin/data_nilai') ?>">Data Nilai</a></li>
                             </ul>
                         </li>
                         <li class="menu-header">About Developer</li>
@@ -117,9 +117,9 @@
                             <a href="#" class="nav-link has-dropdown"><i
                                     class="fas fa-address-card"></i><span>Developer</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/about_developer') ?>">Tentang
+                                <li><a class="nav-link" href="<?= site_url('admin/about_developer') ?>">Tentang
                                         Pembuat</a></li>
-                                <li><a class="nav-link" href="<?= base_url('admin/about_learnify') ?>">Tentang
+                                <li><a class="nav-link" href="<?= site_url('admin/about_learnify') ?>">Tentang
                                         Learnify</a></li>
                             </ul>
                         </li>
@@ -143,7 +143,7 @@
                             <div class="collapse mt-3" id="formTambah">
                                 <div class="card card-body bg-light">
                                     <h5 class="font-weight-bold mb-3">Form Tambah Nilai</h5>
-                                    <form action="<?= base_url('admin/tambah_nilai') ?>" method="POST">
+                                    <form action="<?= site_url('admin/tambah_nilai') ?>" method="POST">
                                         <div class="form-group">
                                             <label>Nama Siswa</label>
                                             <select name="id_siswa" class="form-control" required>

@@ -7,7 +7,7 @@
             <div class="banner_content text-center">
                 <h2 data-aos="fade-up" data-aos-duration="1600">Tentang Learnify</h2>
                 <div data-aos="fade-up" data-aos-duration="1800" class="page_link">
-                    <a href="<?= base_url('welcome') ?>">Beranda</a>
+                    <a href="<?= site_url('welcome') ?>">Beranda</a>
                     <a href="">Tentang</a>
                 </div>
             </div>
@@ -174,7 +174,7 @@
             <h2 data-aos="fade-up" data-aos-duration="1800">LOGIN SEBAGAI GURU DAN UPLOAD MATERI & VIDEO SEKARANG</h2>
             <p data-aos="fade-up" data-aos-duration="2000">Merciful revaluation burying love ultimate value inexpedient ubermensch. Holiest madness victorious morality hope endless christian madness. Love dead fearful transvaluation marvelous. Oneself right ideal abstract endless faith deceptions zarathustra grandeur law ubermensch free. Abstract chaos snare play truth ultimate good self. God overcome sexuality pious abstract good decieve revaluation aversion good. Virtues chaos overcome society holiest truth.
             </p>
-            <a data-aos="fade-up" data-aos-duration="2200" class="main_btn" href="<?= base_url('welcome/guru') ?>">Login Sebagai Guru <span class="lnr lnr-arrow-right text-black"></span></a>
+            <a data-aos="fade-up" data-aos-duration="2200" class="main_btn" href="<?= site_url('welcome/guru') ?>">Login Sebagai Guru <span class="lnr lnr-arrow-right text-black"></span></a>
         </div>
     </div>
 </section>

@@ -12,7 +12,7 @@
                     belajar meski banyak halangan atau rintangan. Nikmati Pembelajaran terstruktur dan efektif
                     menggunakan Learnify serta kemudahan belajar dengan menggunakan aplikasi kami. </p>
                 <a data-aos="fade-up" data-aos-duration="2000" class="main_btn"
-                    href="<?= base_url('index.php/user/registration') ?>#registration">Bergabung Sekarang <span
+                    href="<?= site_url('user/registration') ?>#registration">Bergabung Sekarang <span
                         class="lnr lnr-arrow-right"></span></a>
             </div>
         </div>
@@ -297,7 +297,7 @@
                 abstract good decieve revaluation aversion good. Virtues chaos overcome society holiest truth.
             </p>
             <a data-aos="fade-up" data-aos-duration="2200" class="main_btn"
-                href="<?= base_url('index.php/welcome/guru') ?>">Login
+                href="<?= site_url('welcome/guru') ?>">Login
                 Sebagai Guru <span class="lnr lnr-arrow-right text-black"></span></a>
         </div>
     </div>
