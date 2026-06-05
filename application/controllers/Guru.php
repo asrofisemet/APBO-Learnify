@@ -172,6 +172,102 @@ class Guru extends CI_Controller
         redirect('guru/data_nilai');
     }
 
+    public function data_materi()
+    {
+        $data['user'] = $this->db->get_where('guru', [
+            'email' =>
+                $this->session->userdata('email')
+        ])->row_array();
+
+        // Get materials uploaded by this teacher
+        $this->db->where('nama_guru', $data['user']['nama_guru']);
+        $this->db->order_by('id', 'DESC');
+        $data['materi'] = $this->db->get('materi')->result_array();
+
+        $this->load->view('guru/data_materi', $data);
+    }
+
+    public function edit_materi($id)
+    {
+        $data['user'] = $this->db->get_where('guru', [
+            'email' =>
+                $this->session->userdata('email')
+        ])->row_array();
+
+        $data['materi'] = $this->db->get_where('materi', ['id' => $id])->row_array();
+
+        if (!$data['materi']) {
+            show_404();
+        }
+
+        $this->load->view('guru/edit_materi', $data);
+    }
+
+    public function update_materi()
+    {
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim|min_length[1]', [
+            'required' => 'Harap isi kolom deskripsi.',
+            'min_length' => 'deskripsi terlalu pendek.',
+        ]);
+
+        $id = $this->input->post('id');
+
+        if ($this->form_validation->run() == false) {
+            $this->edit_materi($id);
+        } else {
+            $materi = $this->db->get_where('materi', ['id' => $id])->row_array();
+            if (!$materi) {
+                show_404();
+            }
+
+            $video = $materi['video'];
+            if (!empty($_FILES['video']['name'])) {
+                $config['allowed_types'] = 'mp4|mkv';
+                $config['max_size'] = '0';
+                $config['upload_path'] = './assets/materi_video';
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('video')) {
+                    // Delete old video file
+                    if (!empty($materi['video']) && file_exists('./assets/materi_video/' . $materi['video'])) {
+                        unlink('./assets/materi_video/' . $materi['video']);
+                    }
+                    $video = $this->upload->data('file_name');
+                } else {
+                    $this->session->set_flashdata('error-upload', $this->upload->display_errors('', ''));
+                    redirect('guru/edit_materi/' . $id);
+                }
+            }
+
+            $data = [
+                'deskripsi' => htmlspecialchars($this->input->post('deskripsi', true)),
+                'kelas' => htmlspecialchars($this->input->post('kelas', true)),
+                'video' => $video,
+            ];
+
+            $this->db->where('id', $id);
+            $this->db->update('materi', $data);
+            $this->session->set_flashdata('success-materi', 'Materi berhasil diperbarui!');
+            redirect('guru/data_materi');
+        }
+    }
+
+    public function delete_materi($id)
+    {
+        $materi = $this->db->get_where('materi', ['id' => $id])->row_array();
+        if ($materi) {
+            // Delete video file from server
+            if (!empty($materi['video']) && file_exists('./assets/materi_video/' . $materi['video'])) {
+                unlink('./assets/materi_video/' . $materi['video']);
+            }
+            $this->db->where('id', $id);
+            $this->db->delete('materi');
+            $this->session->set_flashdata('delete-materi', 'Materi berhasil dihapus!');
+        }
+        redirect('guru/data_materi');
+    }
+
     private function _uploadImage()
     {
         $config['upload_path'] = './assets/materi_video';

@@ -168,46 +168,57 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                     <div id="kt_aside_menu" class="kt-aside-menu  kt-aside-menu--dropdown " data-ktmenu-vertical="1"
                         data-ktmenu-dropdown="1" data-ktmenu-scroll="0">
                         <ul class="kt-menu__nav ">
-                            <li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"><a
-                                    href="<?= site_url('guru') ?>" class="kt-menu__link"><i
-                                        class="kt-menu__link-icon flaticon2-protection"></i><span
-                                        class="kt-menu__link-text">Applications</span><i
-                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                                <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
-                                    <div class="kt-menu__wrapper">
-
-                                    </div>
-                                </div>
+                            <li class="kt-menu__item" aria-haspopup="true">
+                                <a href="<?= base_url('guru') ?>" class="kt-menu__link">
+                                    <i class="kt-menu__link-icon flaticon2-protection"></i>
+                                    <span class="kt-menu__link-text">Dashboard</span>
+                                </a>
                             </li>
                             <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--open" aria-haspopup="true"
-                                data-ktmenu-submenu-toggle="click"><a href="javascript:;"
-                                    class="kt-menu__link kt-menu__toggle"><i
-                                        class="kt-menu__link-icon flaticon2-calendar-5"></i><span
-                                        class="kt-menu__link-text">Tambah</span><i
-                                        class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                data-ktmenu-submenu-toggle="click">
+                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                    <i class="kt-menu__link-icon flaticon2-calendar-5"></i>
+                                    <span class="kt-menu__link-text">Tambah</span>
+                                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                </a>
                                 <div class="kt-menu__submenu "><span class="kt-menu__arrow"></span>
                                     <ul class="kt-menu__subnav">
-                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true"><span
-                                                class="kt-menu__link"><span
+                                        <li class="kt-menu__item  kt-menu__item--parent" aria-haspopup="true">
+                                            <span class="kt-menu__link"><span
                                                     class="kt-menu__link-text">Tambah</span></span>
                                         </li>
-                                        <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
-                                                href="<?= site_url('guru/add_materi') ?>" class="kt-menu__link "><i
-                                                    class="kt-menu__link-icon la la-commenting"></i><span
-                                                    class="kt-menu__link-text">Materi</span></a>
+                                        <li class="kt-menu__item " aria-haspopup="true">
+                                            <a href="<?= base_url('guru/add_materi') ?>" class="kt-menu__link ">
+                                                <i class="kt-menu__link-icon la la-commenting"></i>
+                                                <span class="kt-menu__link-text">Materi</span>
+                                            </a>
                                         </li>
-                                        <li class="kt-menu__item " aria-haspopup="true"><a
-                                                href="<?= site_url('guru/data_absensi') ?>" class="kt-menu__link "><i
-                                                    class="kt-menu__link-icon la la-users"></i><span
-                                                    class="kt-menu__link-text">Absensi</span></a>
+                                        <li class="kt-menu__item " aria-haspopup="true">
+                                            <a href="<?= base_url('guru/data_absensi') ?>" class="kt-menu__link ">
+                                                <i class="kt-menu__link-icon la la-users"></i>
+                                                <span class="kt-menu__link-text">Absensi</span>
+                                            </a>
                                         </li>
-                                        <li class="kt-menu__item " aria-haspopup="true"><a
-                                                href="<?= site_url('guru/data_nilai') ?>" class="kt-menu__link "><i
-                                                    class="kt-menu__link-icon la la-star-o"></i><span
-                                                    class="kt-menu__link-text">Nilai</span></a>
+                                        <li class="kt-menu__item " aria-haspopup="true">
+                                            <a href="<?= base_url('guru/data_nilai') ?>" class="kt-menu__link ">
+                                                <i class="kt-menu__link-icon la la-star-o"></i>
+                                                <span class="kt-menu__link-text">Nilai</span>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
+                            </li>
+                            <li class="kt-menu__item" aria-haspopup="true">
+                                <a href="<?= base_url('guru/data_materi') ?>" class="kt-menu__link">
+                                    <i class="kt-menu__link-icon flaticon2-books"></i>
+                                    <span class="kt-menu__link-text">Data Materi</span>
+                                </a>
+                            </li>
+                            <li class="kt-menu__item kt-menu__item--active kt-menu__item--here" aria-haspopup="true">
+                                <a href="<?= base_url('guru/data_nilai') ?>" class="kt-menu__link">
+                                    <i class="kt-menu__link-icon flaticon2-checking"></i>
+                                    <span class="kt-menu__link-text">Data Nilai</span>
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -232,15 +243,19 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                 <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a
                                         href="<?= site_url('guru') ?>" class="kt-menu__link "><span
                                             class="kt-menu__link-text">Dashboard</span></a></li>
-                                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel"
+                                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel active"
                                     data-ktmenu-submenu-toggle="click" aria-haspopup="true"><a href="javascript:;"
                                         class="kt-menu__link kt-menu__toggle"><span
                                             class="kt-menu__link-text">Materi</span><i
                                             class="kt-menu__hor-arrow la la-angle-down"></i></a>
                                     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                                         <ul class="kt-menu__subnav">
-                                            <li class="kt-menu__item " aria-haspopup="true"><a href="javascript:;"
-                                                    class="kt-menu__link "><i
+                                            <li class="kt-menu__item " aria-haspopup="true"><a
+                                                    href="<?= base_url('guru/data_materi') ?>" class="kt-menu__link "><i
+                                                        class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
+                                                        class="kt-menu__link-text">Data Materi</span></a></li>
+                                            <li class="kt-menu__item " aria-haspopup="true"><a
+                                                    href="<?= base_url('guru/add_materi') ?>" class="kt-menu__link "><i
                                                         class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                                                         class="kt-menu__link-text">Tambah Materi</span></a></li>
                                         </ul>

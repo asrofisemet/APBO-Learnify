@@ -1,6 +1,6 @@
 <!--
 @Project: Learnify
-@About: Halaman Edit Nilai - Dashboard Guru
+@About: Halaman Data Materi - Dashboard Guru
 -->
 
 <!DOCTYPE html>
@@ -10,8 +10,8 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Learnify - Edit Nilai</title>
-    <meta name="description" content="Edit Nilai Siswa - Dashboard Guru">
+    <title>Learnify - Data Materi</title>
+    <meta name="description" content="Data Materi - Dashboard Guru">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!--begin::Fonts -->
@@ -152,13 +152,13 @@
                                     </ul>
                                 </div>
                             </li>
-                            <li class="kt-menu__item" aria-haspopup="true">
+                            <li class="kt-menu__item kt-menu__item--active kt-menu__item--here" aria-haspopup="true">
                                 <a href="<?= base_url('guru/data_materi') ?>" class="kt-menu__link">
                                     <i class="kt-menu__link-icon flaticon2-books"></i>
                                     <span class="kt-menu__link-text">Data Materi</span>
                                 </a>
                             </li>
-                            <li class="kt-menu__item kt-menu__item--active kt-menu__item--here" aria-haspopup="true">
+                            <li class="kt-menu__item" aria-haspopup="true">
                                 <a href="<?= base_url('guru/data_nilai') ?>" class="kt-menu__link">
                                     <i class="kt-menu__link-icon flaticon2-checking"></i>
                                     <span class="kt-menu__link-text">Data Nilai</span>
@@ -179,7 +179,7 @@
                             class="la la-close"></i></button>
                     <div class="kt-header-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_header_menu_wrapper">
                         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout- ">
-                            <ul class="kt-menu__nav ">
+                            <ul class="nav navbar-nav menu_nav ">
                                 <li class="kt-menu__item" aria-haspopup="true"><a href="<?= base_url('guru') ?>"
                                         class="kt-menu__link "><span class="kt-menu__link-text">Dashboard</span></a>
                                 </li>
@@ -190,7 +190,7 @@
                                             class="kt-menu__hor-arrow la la-angle-down"></i></a>
                                     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                                         <ul class="kt-menu__subnav">
-                                            <li class="kt-menu__item " aria-haspopup="true"><a
+                                            <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
                                                     href="<?= base_url('guru/data_materi') ?>" class="kt-menu__link "><i
                                                         class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                                                         class="kt-menu__link-text">Data Materi</span></a></li>
@@ -201,9 +201,6 @@
                                         </ul>
                                     </div>
                                 </li>
-                                <li class="kt-menu__item  kt-menu__item--active " aria-haspopup="true"><a
-                                        href="<?= base_url('guru/data_nilai') ?>" class="kt-menu__link "><span
-                                            class="kt-menu__link-text">Data Nilai</span></a></li>
                             </ul>
                         </div>
                     </div>
@@ -253,16 +250,13 @@
                         <div class="kt-subheader__main">
                             <h1 class="kt-subheader__title font-weight-bold"
                                 style="font-size: 28px !important; letter-spacing:-1px; line-height:3px;">
-                                Edit Nilai </h1>
+                                Data Materi </h1>
                             <span class="kt-subheader__separator kt-hidden"></span>
                             <div class="kt-subheader__breadcrumbs">
                                 <a href="<?= base_url('guru') ?>" class="kt-subheader__breadcrumbs-home"><i
                                         class="flaticon2-shelter"></i></a>
                                 <span class="kt-subheader__breadcrumbs-separator"></span>
-                                <a href="<?= base_url('guru/data_nilai') ?>" class="kt-subheader__breadcrumbs-link">Data
-                                    Nilai</a>
-                                <span class="kt-subheader__breadcrumbs-separator"></span>
-                                <a href="#" class="kt-subheader__breadcrumbs-link">Edit</a>
+                                <a href="#" class="kt-subheader__breadcrumbs-link">Data Materi</a>
                             </div>
                         </div>
                     </div>
@@ -272,74 +266,83 @@
                     <div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
 
                         <div class="row">
-                            <div class="col-xl-8 offset-xl-2">
-                                <div class="kt-portlet">
-                                    <div class="kt-portlet__head"
-                                        style="background: linear-gradient(135deg, #5d78ff 0%, #7c8cff 100%); border-radius: 6px 6px 0 0;">
+                            <div class="col-md-12">
+                                <div class="kt-portlet kt-portlet--mobile">
+                                    <div class="kt-portlet__head kt-portlet__head--lg"
+                                        style="background: linear-gradient(135deg, #1bc5bd 0%, #3dd5cd 100%); border-radius: 6px 6px 0 0;">
                                         <div class="kt-portlet__head-label">
                                             <span class="kt-portlet__head-icon">
-                                                <i class="la la-pencil" style="color: #fff;"></i>
+                                                <i class="flaticon2-books" style="color: #fff;"></i>
                                             </span>
                                             <h3 class="kt-portlet__head-title font-weight-bold" style="color: #fff;">
-                                                Edit Data Nilai
+                                                Data Materi Saya
                                             </h3>
                                         </div>
-                                    </div>
-                                    <div class="kt-portlet__body">
-                                        <?php if (isset($nilai_item) && is_array($nilai_item)): ?>
-                                            <form action="<?= base_url('guru/update_nilai') ?>" method="post">
-                                                <input type="hidden" name="id" value="<?php echo $nilai_item['id']; ?>">
-
-                                                <div class="form-group">
-                                                    <label class="font-weight-bold">Siswa</label>
-                                                    <select name="id_siswa" class="form-control" required>
-                                                        <option value="">-- Pilih Siswa --</option>
-                                                        <?php if (isset($siswa) && is_array($siswa)): ?>
-                                                            <?php foreach ($siswa as $s): ?>
-                                                                <option value="<?php echo $s['id']; ?>" <?php echo ($s['id'] == $nilai_item['id_siswa']) ? 'selected' : ''; ?>>
-                                                                    <?php echo $s['nama']; ?>
-                                                                </option>
-                                                            <?php endforeach; ?>
-                                                        <?php endif; ?>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="font-weight-bold">Mata Pelajaran</label>
-                                                    <input type="text" name="nama_mapel" class="form-control"
-                                                        value="<?php echo isset($nilai_item['nama_mapel']) ? $nilai_item['nama_mapel'] : ''; ?>"
-                                                        required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="font-weight-bold">Semester</label>
-                                                    <select name="semester" class="form-control" required>
-                                                        <option value="">-- Pilih Semester --</option>
-                                                        <option value="Ganjil" <?php echo (isset($nilai_item['semester']) && $nilai_item['semester'] == 'Ganjil') ? 'selected' : ''; ?>
-                                                            >Ganjil</option>
-                                                        <option value="Genap" <?php echo (isset($nilai_item['semester']) && $nilai_item['semester'] == 'Genap') ? 'selected' : ''; ?>>Genap
-                                                        </option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="font-weight-bold">Nilai</label>
-                                                    <input type="number" name="nilai" class="form-control" min="0" max="100"
-                                                        value="<?php echo isset($nilai_item['nilai']) ? $nilai_item['nilai'] : ''; ?>"
-                                                        required>
-                                                </div>
-                                                <div class="form-group" style="margin-top: 25px;">
-                                                    <a href="<?= base_url('guru/data_nilai') ?>" class="btn btn-secondary">
-                                                        <i class="la la-arrow-left"></i> Kembali
-                                                    </a>
-                                                    <button type="submit" class="btn btn-brand font-weight-bold">
-                                                        <i class="la la-save"></i> Update Nilai
-                                                    </button>
-                                                </div>
-                                            </form>
-                                        <?php else: ?>
-                                            <div style="text-align: center; padding: 40px;">
-                                                <p>Data nilai tidak ditemukan.</p>
-                                                <a href="<?= base_url('guru/data_nilai') ?>" class="btn btn-brand">Kembali</a>
+                                        <div class="kt-portlet__head-toolbar">
+                                            <div class="kt-portlet__head-wrapper">
+                                                <a href="<?= base_url('guru/add_materi') ?>"
+                                                    class="btn btn-brand btn-elevate btn-icon-sm"
+                                                    style="background-color: #fff; color: #1bc5bd; border-color: #fff; font-weight: bold;">
+                                                    <i class="la la-plus"></i> Tambah Materi
+                                                </a>
                                             </div>
-                                        <?php endif; ?>
+                                        </div>
+                                    </div>
+
+                                    <div class="kt-portlet__body">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped table-bordered table-hover" id="materiTable">
+                                                <thead class="thead-light">
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Mata Pelajaran</th>
+                                                        <th>Video</th>
+                                                        <th>Deskripsi</th>
+                                                        <th>Kelas</th>
+                                                        <th style="width: 150px;">Aksi</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php if (!empty($materi)): ?>
+                                                        <?php foreach ($materi as $m): ?>
+                                                            <tr>
+                                                                <td><?= $m['id'] ?></td>
+                                                                <td><?= $m['nama_mapel'] ?></td>
+                                                                <td>
+                                                                    <a href="<?= base_url('assets/materi_video/' . $m['video']) ?>"
+                                                                        target="_blank" class="btn btn-outline-info btn-sm">
+                                                                        <i class="la la-play-circle"></i> <?= $m['video'] ?>
+                                                                    </a>
+                                                                </td>
+                                                                <td><?= (strlen($m['deskripsi']) > 100) ? substr($m['deskripsi'], 0, 100) . '...' : $m['deskripsi'] ?>
+                                                                </td>
+                                                                <td>
+                                                                    <span class="kt-badge kt-badge--brand kt-badge--inline">
+                                                                        Kelas <?= $m['kelas'] ?>
+                                                                    </span>
+                                                                </td>
+                                                                <td>
+                                                                    <a href="<?= base_url('guru/edit_materi/' . $m['id']) ?>"
+                                                                        class="btn btn-info btn-sm">
+                                                                        <i class="la la-edit"></i> Edit
+                                                                    </a>
+                                                                    <a href="#"
+                                                                        onclick="confirmDelete('<?= base_url('guru/delete_materi/' . $m['id']) ?>')"
+                                                                        class="btn btn-danger btn-sm">
+                                                                        <i class="la la-trash"></i> Hapus
+                                                                    </a>
+                                                                </td>
+                                                            </tr>
+                                                        <?php endforeach; ?>
+                                                    <?php else: ?>
+                                                        <tr>
+                                                            <td colspan="6" class="text-center text-muted py-4">Belum ada materi
+                                                                yang Anda unggah.</td>
+                                                        </tr>
+                                                    <?php endif; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -419,6 +422,50 @@
             <!--begin::Global App Bundle(used by all pages) -->
             <script src="<?= base_url('assets') ?>/assets/app/bundle/app.bundle.js" type="text/javascript"></script>
             <!--end::Global App Bundle -->
+
+            <!-- Swal Success alerts -->
+            <?php if ($this->session->flashdata('success-materi')): ?>
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Berhasil!',
+                        text: '<?= $this->session->flashdata('success-materi') ?>',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                </script>
+            <?php endif; ?>
+
+            <?php if ($this->session->flashdata('delete-materi')): ?>
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Dihapus!',
+                        text: '<?= $this->session->flashdata('delete-materi') ?>',
+                        showConfirmButton: false,
+                        timer: 2500
+                    })
+                </script>
+            <?php endif; ?>
+
+            <script>
+                function confirmDelete(url) {
+                    Swal.fire({
+                        title: 'Apakah Anda yakin?',
+                        text: "Data materi dan file videonya akan dihapus permanen!",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya, Hapus!',
+                        cancelButtonText: 'Batal'
+                    }).then((result) => {
+                        if (result.value) {
+                            window.location.href = url;
+                        }
+                    });
+                }
+            </script>
 </body>
 
 <!-- end::Body -->
