@@ -318,4 +318,124 @@ class Admin extends CI_Controller
             redirect('admin/data_materi');
         }
     }
+
+    // Manajemen Absensi
+    public function data_absensi()
+    {
+        $this->db->select('absensi.*, siswa.nama');
+        $this->db->from('absensi');
+        $this->db->join('siswa', 'siswa.id = absensi.id_siswa', 'left');
+        $this->db->order_by('absensi.tanggal', 'DESC');
+        $data['absensi'] = $this->db->get()->result();
+
+        $data['siswa'] = $this->db->get('siswa')->result();
+        $this->load->view('admin/data_absensi', $data);
+    }
+
+    public function tambah_absensi()
+    {
+        $data = [
+            'id_siswa' => $this->input->post('id_siswa'),
+            'tanggal'  => $this->input->post('tanggal'),
+            'status'   => $this->input->post('status')
+        ];
+        $this->db->insert('absensi', $data);
+        $this->session->set_flashdata('success-reg', 'Berhasil!');
+        redirect('admin/data_absensi');
+    }
+
+    public function update_absensi($id)
+    {
+        $this->db->select('absensi.*, siswa.nama');
+        $this->db->from('absensi');
+        $this->db->join('siswa', 'siswa.id = absensi.id_siswa', 'left');
+        $this->db->where('absensi.id', $id);
+        $data['detail'] = $this->db->get()->row_array();
+
+        $data['siswa'] = $this->db->get('siswa')->result();
+        $this->load->view('admin/update_absensi', $data);
+    }
+
+    public function absensi_edit()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'id_siswa' => $this->input->post('id_siswa'),
+            'tanggal'  => $this->input->post('tanggal'),
+            'status'   => $this->input->post('status')
+        ];
+        $this->db->where('id', $id);
+        $this->db->update('absensi', $data);
+        $this->session->set_flashdata('success-edit', 'Berhasil!');
+        redirect('admin/data_absensi');
+    }
+
+    public function delete_absensi($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('absensi');
+        $this->session->set_flashdata('user-delete', 'Berhasil!');
+        redirect('admin/data_absensi');
+    }
+
+    // Manajemen Nilai
+    public function data_nilai()
+    {
+        $this->db->select('nilai.*, siswa.nama');
+        $this->db->from('nilai');
+        $this->db->join('siswa', 'siswa.id = nilai.id_siswa', 'left');
+        $this->db->order_by('nilai.id', 'DESC');
+        $data['nilai'] = $this->db->get()->result();
+
+        $data['siswa'] = $this->db->get('siswa')->result();
+        $this->load->view('admin/data_nilai', $data);
+    }
+
+    public function tambah_nilai()
+    {
+        $data = [
+            'id_siswa'   => $this->input->post('id_siswa'),
+            'nama_mapel' => htmlspecialchars($this->input->post('nama_mapel', true)),
+            'semester'   => htmlspecialchars($this->input->post('semester', true)),
+            'nilai'      => $this->input->post('nilai')
+        ];
+        $this->db->insert('nilai', $data);
+        $this->session->set_flashdata('success-reg', 'Berhasil!');
+        redirect('admin/data_nilai');
+    }
+
+    public function update_nilai($id)
+    {
+        $this->db->select('nilai.*, siswa.nama');
+        $this->db->from('nilai');
+        $this->db->join('siswa', 'siswa.id = nilai.id_siswa', 'left');
+        $this->db->where('nilai.id', $id);
+        $data['detail'] = $this->db->get()->row_array();
+
+        $data['siswa'] = $this->db->get('siswa')->result();
+        $this->load->view('admin/update_nilai', $data);
+    }
+
+    public function nilai_edit()
+    {
+        $id = $this->input->post('id');
+        $data = [
+            'id_siswa'   => $this->input->post('id_siswa'),
+            'nama_mapel' => htmlspecialchars($this->input->post('nama_mapel', true)),
+            'semester'   => htmlspecialchars($this->input->post('semester', true)),
+            'nilai'      => $this->input->post('nilai')
+        ];
+        $this->db->where('id', $id);
+        $this->db->update('nilai', $data);
+        $this->session->set_flashdata('success-edit', 'Berhasil!');
+        redirect('admin/data_nilai');
+    }
+
+    public function delete_nilai($id)
+    {
+        $this->db->where('id', $id);
+        $this->db->delete('nilai');
+        $this->session->set_flashdata('user-delete', 'Berhasil!');
+        redirect('admin/data_nilai');
+    }
 }

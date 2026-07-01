@@ -169,7 +169,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                         data-ktmenu-dropdown="1" data-ktmenu-scroll="0">
                         <ul class="kt-menu__nav ">
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="<?= base_url('guru') ?>" class="kt-menu__link">
+                                <a href="<?= site_url('guru') ?>" class="kt-menu__link">
                                     <i class="kt-menu__link-icon flaticon2-protection"></i>
                                     <span class="kt-menu__link-text">Dashboard</span>
                                 </a>
@@ -188,19 +188,14 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                                     class="kt-menu__link-text">Tambah</span></span>
                                         </li>
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="<?= base_url('guru/add_materi') ?>" class="kt-menu__link ">
+                                            <a href="<?= site_url('guru/add_materi') ?>" class="kt-menu__link ">
                                                 <i class="kt-menu__link-icon la la-commenting"></i>
                                                 <span class="kt-menu__link-text">Materi</span>
                                             </a>
                                         </li>
+                                        
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="<?= base_url('guru/data_absensi') ?>" class="kt-menu__link ">
-                                                <i class="kt-menu__link-icon la la-users"></i>
-                                                <span class="kt-menu__link-text">Absensi</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="<?= base_url('guru/data_nilai') ?>" class="kt-menu__link ">
+                                            <a href="<?= site_url('guru/data_nilai') ?>" class="kt-menu__link ">
                                                 <i class="kt-menu__link-icon la la-star-o"></i>
                                                 <span class="kt-menu__link-text">Nilai</span>
                                             </a>
@@ -209,13 +204,13 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                 </div>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="<?= base_url('guru/data_materi') ?>" class="kt-menu__link">
+                                <a href="<?= site_url('guru/data_materi') ?>" class="kt-menu__link">
                                     <i class="kt-menu__link-icon flaticon2-books"></i>
                                     <span class="kt-menu__link-text">Data Materi</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item kt-menu__item--active kt-menu__item--here" aria-haspopup="true">
-                                <a href="<?= base_url('guru/data_nilai') ?>" class="kt-menu__link">
+                                <a href="<?= site_url('guru/data_nilai') ?>" class="kt-menu__link">
                                     <i class="kt-menu__link-icon flaticon2-checking"></i>
                                     <span class="kt-menu__link-text">Data Nilai</span>
                                 </a>
@@ -251,11 +246,11 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                                         <ul class="kt-menu__subnav">
                                             <li class="kt-menu__item " aria-haspopup="true"><a
-                                                    href="<?= base_url('guru/data_materi') ?>" class="kt-menu__link "><i
+                                                    href="<?= site_url('guru/data_materi') ?>" class="kt-menu__link "><i
                                                         class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                                                         class="kt-menu__link-text">Data Materi</span></a></li>
                                             <li class="kt-menu__item " aria-haspopup="true"><a
-                                                    href="<?= base_url('guru/add_materi') ?>" class="kt-menu__link "><i
+                                                    href="<?= site_url('guru/add_materi') ?>" class="kt-menu__link "><i
                                                         class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                                                         class="kt-menu__link-text">Tambah Materi</span></a></li>
                                         </ul>
@@ -405,8 +400,8 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                                                                     <option value="">-- Pilih Siswa --
                                                                                     </option>
                                                                                     <?php foreach ($siswa as $s): ?>
-                                                                                        <option value="<?= $s->id ?>">
-                                                                                            <?= $s->nama ?></option>
+                                                                                        <option value="<?= $s['id'] ?>">
+                                                                                            <?= $s['nama'] ?></option>
                                                                                     <?php endforeach; ?>
                                                                                 </select>
                                                                             </div>
@@ -468,21 +463,21 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                                                     <?php if (!empty($nilai)): ?>
                                                                         <?php foreach ($nilai as $n): ?>
                                                                             <tr>
-                                                                                <td><?= $n->id ?></td>
-                                                                                <td><?= $n->nama ?? '<em class="text-muted">Tidak Ditemukan</em>' ?>
+                                                                                <td><?= $n['id'] ?></td>
+                                                                                <td><?= $n['nama'] ?? '<em class="text-muted">Tidak Ditemukan</em>' ?>
                                                                                 </td>
-                                                                                <td><?= $n->nama_mapel ?></td>
-                                                                                <td>Semester <?= $n->semester ?></td>
+                                                                                <td><?= $n['nama_mapel'] ?></td>
+                                                                                <td>Semester <?= $n['semester'] ?></td>
                                                                                 <td>
                                                                                     <span
-                                                                                        class="kt-badge kt-badge--<?= ($n->nilai >= 75) ? 'success' : 'danger' ?> kt-badge--inline kt-badge--pill">
-                                                                                        <?= $n->nilai ?>
+                                                                                        class="kt-badge kt-badge--<?= ($n['nilai'] >= 75) ? 'success' : 'danger' ?> kt-badge--inline kt-badge--pill">
+                                                                                        <?= $n['nilai'] ?>
                                                                                     </span>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <a href="<?= site_url('guru/update_nilai/' . $n->id) ?>"
+                                                                                    <a href="<?= site_url('guru/update_nilai/' . $n['id']) ?>"
                                                                                         class="btn btn-info btn-sm">Edit ✎</a>
-                                                                                    <a href="<?= site_url('guru/delete_nilai/' . $n->id) ?>"
+                                                                                    <a href="<?= site_url('guru/delete_nilai/' . $n['id']) ?>"
                                                                                         class="btn btn-danger btn-sm remove">Hapus
                                                                                         ✖</a>
                                                                                 </td>
@@ -500,12 +495,53 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>"label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
-                                            "shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
-                                            }
-                                            }
-                                            };
-                                            </script>
+                                                </div>
+                                            </div>
+
+                        <!-- begin:: Footer -->
+                        <div class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop">
+                            <div class="kt-footer__copyright">
+                                2020&nbsp;&copy;&nbsp;<a href="https://syauqizaidan.github.io/" target="_blank"
+                                    class="kt-link">Syaauqi Zaaidan & Descienfy</a>
+                            </div>
+                            <div class="kt-footer__menu">
+                                Made with &nbsp; <span class="" style="color: red"> &#10084;</span> &nbsp; by Syaauqi
+                            </div>
+                        </div>
+                        <!-- end:: Footer -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- end:: Page -->
+
+            <!-- begin::Scrolltop -->
+            <div id="kt_scrolltop" class="kt-scrolltop">
+                <i class="fa fa-arrow-up"></i>
+            </div>
+            <!-- end::Scrolltop -->
+
+            <!-- begin::Global Config -->
+            <script>
+                var KTAppOptions = {
+                    "colors": {
+                        "state": {
+                            "brand": "#4dbf1c",
+                            "light": "#ffffff",
+                            "dark": "#282a3c",
+                            "primary": "#5867dd",
+                            "success": "#34bfa3",
+                            "info": "#36a3f7",
+                            "warning": "#ffb822",
+                            "danger": "#fd3995"
+                        },
+                        "base": {
+                            "label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
+                            "shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
+                        }
+                    }
+                };
+            </script>
 
                                             <!-- end::Global Config -->
 

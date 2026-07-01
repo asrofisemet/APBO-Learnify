@@ -1,5 +1,5 @@
 RewriteEngine On
-# RewriteBase /Website-E-Learning-master/
+RewriteBase /Website-E-Learning-master/
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ index.php?/$1 [L,QSA]

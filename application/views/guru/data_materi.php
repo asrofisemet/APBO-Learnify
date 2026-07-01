@@ -80,7 +80,7 @@
     <!-- begin:: Header Mobile -->
     <div id="kt_header_mobile" class="kt-header-mobile  kt-header-mobile--fixed ">
         <div class="kt-header-mobile__logo">
-            <a href="<?= base_url('guru') ?>">
+            <a href="<?= site_url('guru') ?>">
                 <img alt="Logo" src="<?= base_url('assets') ?>/img/logo.png" width="90px;" />
             </a>
         </div>
@@ -103,7 +103,7 @@
                 id="kt_aside">
                 <div class="kt-aside__brand kt-grid__item " id="kt_aside_brand">
                     <div class="kt-aside__brand-logo">
-                        <a href="<?= base_url('guru') ?>">
+                        <a href="<?= site_url('guru') ?>">
                             <img alt="Logo" width="35px;" src="<?= base_url('assets') ?>/img/favicon.png" />
                         </a>
                     </div>
@@ -113,7 +113,7 @@
                         data-ktmenu-dropdown="1" data-ktmenu-scroll="0">
                         <ul class="kt-menu__nav ">
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="<?= base_url('guru') ?>" class="kt-menu__link">
+                                <a href="<?= site_url('guru') ?>" class="kt-menu__link">
                                     <i class="kt-menu__link-icon flaticon2-protection"></i>
                                     <span class="kt-menu__link-text">Dashboard</span>
                                 </a>
@@ -132,19 +132,14 @@
                                                     class="kt-menu__link-text">Tambah</span></span>
                                         </li>
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="<?= base_url('guru/add_materi') ?>" class="kt-menu__link ">
+                                            <a href="<?= site_url('guru/add_materi') ?>" class="kt-menu__link ">
                                                 <i class="kt-menu__link-icon la la-commenting"></i>
                                                 <span class="kt-menu__link-text">Materi</span>
                                             </a>
                                         </li>
+                                        
                                         <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="<?= base_url('guru/data_absensi') ?>" class="kt-menu__link ">
-                                                <i class="kt-menu__link-icon la la-users"></i>
-                                                <span class="kt-menu__link-text">Absensi</span>
-                                            </a>
-                                        </li>
-                                        <li class="kt-menu__item " aria-haspopup="true">
-                                            <a href="<?= base_url('guru/data_nilai') ?>" class="kt-menu__link ">
+                                            <a href="<?= site_url('guru/data_nilai') ?>" class="kt-menu__link ">
                                                 <i class="kt-menu__link-icon la la-star-o"></i>
                                                 <span class="kt-menu__link-text">Nilai</span>
                                             </a>
@@ -153,13 +148,13 @@
                                 </div>
                             </li>
                             <li class="kt-menu__item kt-menu__item--active kt-menu__item--here" aria-haspopup="true">
-                                <a href="<?= base_url('guru/data_materi') ?>" class="kt-menu__link">
+                                <a href="<?= site_url('guru/data_materi') ?>" class="kt-menu__link">
                                     <i class="kt-menu__link-icon flaticon2-books"></i>
                                     <span class="kt-menu__link-text">Data Materi</span>
                                 </a>
                             </li>
                             <li class="kt-menu__item" aria-haspopup="true">
-                                <a href="<?= base_url('guru/data_nilai') ?>" class="kt-menu__link">
+                                <a href="<?= site_url('guru/data_nilai') ?>" class="kt-menu__link">
                                     <i class="kt-menu__link-icon flaticon2-checking"></i>
                                     <span class="kt-menu__link-text">Data Nilai</span>
                                 </a>
@@ -180,7 +175,7 @@
                     <div class="kt-header-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_header_menu_wrapper">
                         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout- ">
                             <ul class="nav navbar-nav menu_nav ">
-                                <li class="kt-menu__item" aria-haspopup="true"><a href="<?= base_url('guru') ?>"
+                                <li class="kt-menu__item" aria-haspopup="true"><a href="<?= site_url('guru') ?>"
                                         class="kt-menu__link "><span class="kt-menu__link-text">Dashboard</span></a>
                                 </li>
                                 <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel active"
@@ -191,11 +186,11 @@
                                     <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
                                         <ul class="kt-menu__subnav">
                                             <li class="kt-menu__item kt-menu__item--active" aria-haspopup="true"><a
-                                                    href="<?= base_url('guru/data_materi') ?>" class="kt-menu__link "><i
+                                                    href="<?= site_url('guru/data_materi') ?>" class="kt-menu__link "><i
                                                         class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                                                         class="kt-menu__link-text">Data Materi</span></a></li>
                                             <li class="kt-menu__item " aria-haspopup="true"><a
-                                                    href="<?= base_url('guru/add_materi') ?>" class="kt-menu__link "><i
+                                                    href="<?= site_url('guru/add_materi') ?>" class="kt-menu__link "><i
                                                         class="kt-menu__link-bullet kt-menu__link-bullet--dot"><span></span></i><span
                                                         class="kt-menu__link-text">Tambah Materi</span></a></li>
                                         </ul>
@@ -253,7 +248,7 @@
                                 Data Materi </h1>
                             <span class="kt-subheader__separator kt-hidden"></span>
                             <div class="kt-subheader__breadcrumbs">
-                                <a href="<?= base_url('guru') ?>" class="kt-subheader__breadcrumbs-home"><i
+                                <a href="<?= site_url('guru') ?>" class="kt-subheader__breadcrumbs-home"><i
                                         class="flaticon2-shelter"></i></a>
                                 <span class="kt-subheader__breadcrumbs-separator"></span>
                                 <a href="#" class="kt-subheader__breadcrumbs-link">Data Materi</a>
@@ -280,7 +275,7 @@
                                         </div>
                                         <div class="kt-portlet__head-toolbar">
                                             <div class="kt-portlet__head-wrapper">
-                                                <a href="<?= base_url('guru/add_materi') ?>"
+                                                <a href="<?= site_url('guru/add_materi') ?>"
                                                     class="btn btn-brand btn-elevate btn-icon-sm"
                                                     style="background-color: #fff; color: #1bc5bd; border-color: #fff; font-weight: bold;">
                                                     <i class="la la-plus"></i> Tambah Materi
@@ -322,12 +317,12 @@
                                                                     </span>
                                                                 </td>
                                                                 <td>
-                                                                    <a href="<?= base_url('guru/edit_materi/' . $m['id']) ?>"
+                                                                    <a href="<?= site_url('guru/edit_materi/' . $m['id']) ?>"
                                                                         class="btn btn-info btn-sm">
                                                                         <i class="la la-edit"></i> Edit
                                                                     </a>
                                                                     <a href="#"
-                                                                        onclick="confirmDelete('<?= base_url('guru/delete_materi/' . $m['id']) ?>')"
+                                                                        onclick="confirmDelete('<?= site_url('guru/delete_materi/' . $m['id']) ?>')"
                                                                         class="btn btn-danger btn-sm">
                                                                         <i class="la la-trash"></i> Hapus
                                                                     </a>
